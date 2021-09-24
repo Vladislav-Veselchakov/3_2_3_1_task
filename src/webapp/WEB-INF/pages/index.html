@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users table</title>
+    <style  type="text/css">
+        table {
+            border-collapse: collapse;
+        }
+        table td, table th {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h3>cars table</h3>
+<br/>
+<table border="1" cellpadding="5" cellspacing="1">
+    <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>Last name</th>
+        <th>Email</th>
+    </tr>
+    <tr th:each = "user : ${users}">
+        <td th:utext = "${user.id}"> </td>
+        <td th:utext = "${user.firstName}"> </td>
+        <td th:utext = "${user.lastName}"> </td>
+        <td th:utext = "${user.email}"> </td>
+    </tr>
+</table>
+
+</body>
+</html>
