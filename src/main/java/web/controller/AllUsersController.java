@@ -24,7 +24,7 @@ public class AllUsersController {
     public String getUsers(ModelMap model) {
 //        return "redirect:cars?count=-1";
         List<User> users = service.getUsers();
-//        model.addAttribute("users", users);
+        model.addAttribute("users", users);
         return "index";
     }
 
