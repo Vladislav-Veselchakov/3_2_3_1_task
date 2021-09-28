@@ -17,6 +17,7 @@ public class AllUsersController {
 
     public AllUsersController(UserService service) {
         this.service = service;
+
     }
 
     @GetMapping(value = "/")
