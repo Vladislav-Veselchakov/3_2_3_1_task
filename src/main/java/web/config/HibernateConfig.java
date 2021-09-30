@@ -54,11 +54,22 @@ public class HibernateConfig {
         em.setPackagesToScan("web.model");
         // time 11:15 +-
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        em.setJpaProperties(getHiberyateProperties()); // see allow this func: getHibernate()
+        em.setJpaProperties(getHiberyateProperties());
         return em;
     }
 
     public Properties getHiberyateProperties() {
+        Properties properties = new Properties();
+        properties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+        properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
+        properties.put("hibernate.connection.driver_class", env.getProperty("hibernate.connection.driver_class"));
+        properties.put("hibernate.connection.characterEncoding", env.getProperty("hibernate.connection.characterEncoding"));
+        properties.put("hibernate.connection.CharSet", env.getProperty("hibernate.connection.CharSet"));
+        properties.put("hibernate.connection.useUnicode", env.getProperty("hibernate.connection.useUnicode"));
+
+        return properties;
+/** load file
         try{
             Properties properties = new Properties();
             InputStream is = getClass().getClassLoader().getResourceAsStream("db.properties");
@@ -67,6 +78,7 @@ public class HibernateConfig {
         } catch(IOException e) {
             throw new IllegalArgumentException("can't find db.properties file", e);
         }
+*/
     }
 
     @Bean

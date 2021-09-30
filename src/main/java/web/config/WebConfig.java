@@ -16,6 +16,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.jta.JtaTransactionManager;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
@@ -51,6 +52,7 @@ public class WebConfig implements WebMvcConfigurer {
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
+        templateResolver.setCharacterEncoding("UTF-8"); // vl added
         templateResolver.setPrefix("/WEB-INF/pages/");
         templateResolver.setSuffix(".html");
         return templateResolver;
@@ -68,8 +70,17 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+        resolver.setCharacterEncoding("UTF-8"); // vl added
+        resolver.setContentType("text/html; charset=UTF-8"); // vl added
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
     }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/styles/**")
+                .addResourceLocations("classpath:/static/");
+    }
+
 
 }

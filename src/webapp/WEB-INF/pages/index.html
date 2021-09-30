@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<!--    <meta charset="UTF-8">-->
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+    <link th:href="@{/styles/main.css}" rel="stylesheet" />
     <title>Users table</title>
-    <style  type="text/css">
-        table {
-            border-collapse: collapse;
-        }
-        table td, table th {
-            padding: 5px;
-        }
-    </style>
 </head>
 <body>
 <h3>cars table</h3>
 <br/>
-<table border="1" cellpadding="5" cellspacing="1">
+<table>
     <tr>
         <th>id</th>
         <th>Name</th>
@@ -30,14 +24,30 @@
     </tr>
 </table>
 
-<!--
-<form action="#" th:action="@{/addUser}" method="post" th:object="${AddUser}">
-    <input type="text" th:field = "*{firstName}">
-    <input type="text" th:field = "*{lastName}">
-    <input type="text" th:field = "*{email}">
-    <input type="submit" value="Edit film">
+
+<h2>begin form----------------</h2>
+
+<form action="#" th:action="@{/addUser}" method="post" th:object="${user}">
+
+    <input type="text" th:field = "*{firstName}"/>
+    <input type="text" th:field = "*{lastName}"/>
+    <input type="text" th:field = "*{email}"/>
+    <input type="submit" value="Add user"/>
 </form>
--->
+
+<h2>end form========================</h2>
+
+<h3>---------form 2---------------</h3>
+<!--<form th:action="@{/addUser}" method="post" th:object="${Raznoe}">-->
+<form th:action="@{/addUser}" method="post">
+    <input name="input33" type="text" th:value="${input1}"/>
+    <input type="submit" value="Edit nothing"/>
+
+</form>
+<h3>----=== end form 2 =======------</h3>
+
+<h3 th:utext="${result001}"></h3>
+
 
 </body>
 </html>

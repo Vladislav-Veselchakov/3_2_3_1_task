@@ -17,7 +17,6 @@ public class AllUsersController {
 
     public AllUsersController(UserService service) {
         this.service = service;
-
     }
 
     @GetMapping(value = "/")
@@ -25,6 +24,7 @@ public class AllUsersController {
 //        return "redirect:cars?count=-1";
         List<User> users = service.getUsers();
         model.addAttribute("users", users);
+        model.addAttribute("user", new User());
         return "index";
     }
 

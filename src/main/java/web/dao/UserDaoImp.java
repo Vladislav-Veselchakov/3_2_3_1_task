@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import web.model.User;
 
 import javax.persistence.EntityManager;
@@ -24,9 +25,10 @@ public class UserDaoImp implements UserDao {
    EntityManager entityManager;
 
    @Override
+   @Transactional
    public void add(User user) {
       // sessionFactory.getCurrentSession().save(user);
-      
+      entityManager.persist(user);
    }
 
    @Override
