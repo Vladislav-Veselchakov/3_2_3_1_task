@@ -25,6 +25,8 @@ public class AllUsersController {
         List<User> users = service.getUsers();
         model.addAttribute("users", users);
         model.addAttribute("user", new User());
+
+        model.addAttribute("input2", "one tnwo thhhhhreee");
         return "index";
     }
 

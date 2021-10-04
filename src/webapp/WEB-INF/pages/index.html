@@ -7,7 +7,7 @@
     <title>Users table</title>
 </head>
 <body>
-<h3>cars table</h3>
+<h3>Users table</h3>
 <br/>
 <table>
     <tr>
@@ -21,33 +21,18 @@
         <td th:utext = "${user.firstName}"> </td>
         <td th:utext = "${user.lastName}"> </td>
         <td th:utext = "${user.email}"> </td>
+		<td>
+            <a th:href="@{/edit(id=${user.id})}">edit</a>
+<!--            <a href="/edit?id=${user.id}">edit</a>-->
+			<a th:href="@{/delete(id=${user.id})}">delete</a>
+		</td>		
     </tr>
 </table>
 
+<h2> <a href="/addUser">Add new user</a> </h2>
 
-<h2>begin form----------------</h2>
-
-<form action="#" th:action="@{/addUser}" method="post" th:object="${user}">
-
-    <input type="text" th:field = "*{firstName}"/>
-    <input type="text" th:field = "*{lastName}"/>
-    <input type="text" th:field = "*{email}"/>
-    <input type="submit" value="Add user"/>
-</form>
-
-<h2>end form========================</h2>
-
-<h3>---------form 2---------------</h3>
-<!--<form th:action="@{/addUser}" method="post" th:object="${Raznoe}">-->
-<form th:action="@{/addUser}" method="post">
-    <input name="input33" type="text" th:value="${input1}"/>
-    <input type="submit" value="Edit nothing"/>
-
-</form>
-<h3>----=== end form 2 =======------</h3>
 
 <h3 th:utext="${result001}"></h3>
-
 
 </body>
 </html>

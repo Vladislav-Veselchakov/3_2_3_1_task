@@ -27,15 +27,34 @@ public class UserDaoImp implements UserDao {
    @Override
    @Transactional
    public void add(User user) {
-      // sessionFactory.getCurrentSession().save(user);
       entityManager.persist(user);
    }
 
    @Override
+   @Transactional
+   public void update(User user) {
+      //entityManager.merge();
+      entityManager.merge(user);
+   }
+
+   @Override
    @SuppressWarnings("unchecked")
+   @Transactional
    public List<User> getUsers() {
       //TypedQuery<User> query=sessionFactory.getCurrentSession().createQuery("from User");
       return entityManager.createQuery("SELECT u FROM User u").getResultList();
    }
 
+   @Override
+   @Transactional
+   public User getUserById(Long id) {
+      return entityManager.find(User.class, id);
+   }
+
+   @Override
+   @Transactional
+   public void deleteUser(Long id) {
+      User user = entityManager.find(User.class, id);
+      entityManager.remove(user);
+   }
 }
